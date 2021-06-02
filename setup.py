@@ -106,10 +106,9 @@ if __name__ == '__main__':
     except:
         print("[!] Telegram API token is invalid... Please try again.")
     dispatcher = updater.dispatcher
-    updater.dispatcher.add_handler(CommandHandler(check_code))
 
     verify_handler = MessageHandler(Filters.text, check_code)
-    dispatcher.add_handler(verify_handler)
+    updater.dispatcher.add_handler(verify_handler(check_code))
 
     print("\n[+] Waiting for your message...")
     updater.start_polling()
