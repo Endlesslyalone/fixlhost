@@ -99,7 +99,7 @@ if __name__ == '__main__':
             context.bot.send_message(chat_id=update.message.chat.id, text="✅ Verification successful.")
             admin_chatid = str(update.message.chat.id)
         else:
-            bot.send_message(chat_id=update.message.chat.id, text="❌ Incorrect code.")
+            context.bot.send_message(chat_id=update.message.chat.id, text="❌ Incorrect code.")
 
     try:
         updater = Updater(token=telegram_api)
