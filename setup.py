@@ -93,8 +93,25 @@ if __name__ == '__main__':
     verification_code = ''.join(str(randint(0,9)) for _ in range(6))
     print("\n[+] Verification code to send: " + verification_code)
     admin_chatid = False
-    
+    def check_code(context, update):
+        global admin_chatid
+        if update.message.text == verification_code:
+            context.bot.send_message(chat_id=update.message.chat_id, text="✅ Verification successful.")
+            admin_chatid = str(update.message.chat_id)
+        else:
+            bot.send_message(chat_id=update.message.chat_id, text="❌ Incorrect code.")
+
+    try:
+        updater = Updater(token=telegram_api)
+    except:
+        print("[!] Telegram API token is invalid... Please try again.")
+    dispatcher = updater.dispatcher
+
+    verify_handler = MessageHandler(Filters.text, check_code)
+    dispatcher.add_handler(verify_handler)
+
     print("\n[+] Waiting for your message...")
+    updater.start_polling()
 
     while True:
         try:
