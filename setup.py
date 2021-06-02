@@ -95,7 +95,7 @@ if __name__ == '__main__':
     admin_chatid = False
     
     print("\n[+] Waiting for your message...")
-    updater.start_polling()
+    start_polling()
 
     while True:
         try:
