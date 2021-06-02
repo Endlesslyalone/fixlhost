@@ -93,7 +93,7 @@ if __name__ == '__main__':
     verification_code = ''.join(str(randint(0,9)) for _ in range(6))
     print("\n[+] Verification code to send: " + verification_code)
     admin_chatid = False
-    def check_code(bot, update, context: CallbackContext):
+    def check_code(bot, update, CallbackContext):
         global admin_chatid
         if update.message.text == verification_code:
             bot.send_message(chat_id=update.message.chat_id, text="✅ Verification successful.")
