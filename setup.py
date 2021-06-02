@@ -96,10 +96,10 @@ if __name__ == '__main__':
     def check_code(context, update):
         global admin_chatid
         if update.message.text == verification_code:
-            context.bot.send_message(chat_id=update.message.chat_id, text="✅ Verification successful.")
-            admin_chatid = str(update.message.chat_id)
+            context.bot.send_message(chat_id=update.message.chat.id, text="✅ Verification successful.")
+            admin_chatid = str(update.message.chat.id)
         else:
-            bot.send_message(chat_id=update.message.chat_id, text="❌ Incorrect code.")
+            bot.send_message(chat_id=update.message.chat.id, text="❌ Incorrect code.")
 
     try:
         updater = Updater(token=telegram_api)
@@ -107,7 +107,7 @@ if __name__ == '__main__':
         print("[!] Telegram API token is invalid... Please try again.")
     dispatcher = updater.dispatcher
 
-    verify_handler = str(MessageHandler(Filters.text, check_code))
+    verify_handler = MessageHandler(Filters.text, check_code)
     updater.dispatcher.add_handler(verify_handler(check_code))
 
     print("\n[+] Waiting for your message...")
