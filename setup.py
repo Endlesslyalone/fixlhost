@@ -95,7 +95,7 @@ if __name__ == '__main__':
     admin_chatid = False
     def start(update, context):
         global admin_chatid
-            bot.send_message(chat_id=update.message.chat_id, text="не ебу хорошо всё или нет, но на всякий случай помолись.")
+            context.bot.send_message(chat_id=update.message.chat_id, text="не ебу хорошо всё или нет, но на всякий случай помолись.")
 
                 updater.dispatcher.add_handler(CommandHandler('start', start))
 
