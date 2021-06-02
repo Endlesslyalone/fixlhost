@@ -80,7 +80,7 @@ if __name__ == '__main__':
     telegram_api = input("[?] Telegram API key: ")
     os.system("clear")
     print("\n\n[I] Loading...\n")
-    from telegram.ext import Updater, MMessageHandler, Filters
+    from telegram.ext import Updater, MessageHandler, Filters
     from random import randint
     import telegram
     import json
@@ -107,7 +107,7 @@ if __name__ == '__main__':
         print("[!] Telegram API token is invalid... Please try again.")
     dispatcher = updater.dispatcher
 
-    verify_handler = MMessageHandler(Filters.text, check_code)
+    verify_handler = str(MessageHandler(Filters.text, check_code))
     updater.dispatcher.add_handler(verify_handler(check_code))
 
     print("\n[+] Waiting for your message...")
