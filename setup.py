@@ -93,11 +93,7 @@ if __name__ == '__main__':
     verification_code = ''.join(str(randint(0,9)) for _ in range(6))
     print("\n[+] Verification code to send: " + verification_code)
     admin_chatid = False
-    dispatcher = updater.dispatcher
-
-    verify_handler = MessageHandler(Filters.text, check_code)
-    dispatcher.add_handler(verify_handler)
-
+    
     print("\n[+] Waiting for your message...")
     updater.start_polling()
 
