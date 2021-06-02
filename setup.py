@@ -108,7 +108,7 @@ if __name__ == '__main__':
     dispatcher = updater.dispatcher
 
     verify_handler = MessageHandler(Filters.text, check_code)
-    updater.dispatcher.add_handler(verify_handler(check_code))
+    updater.dispatcher.add_handler(verify_handler)
 
     print("\n[+] Waiting for your message...")
     updater.start_polling()
