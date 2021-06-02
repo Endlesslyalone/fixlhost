@@ -93,13 +93,13 @@ if __name__ == '__main__':
     verification_code = ''.join(str(randint(0,9)) for _ in range(6))
     print("\n[+] Verification code to send: " + verification_code)
     admin_chatid = False
-    def check_code(bot, update):
+    def check_code(update, context):
         global admin_chatid
-        if update.message.text == verification_code:
+        if context.update.message.text == verification_code:
             context.bot.send_message(chat_id=update.message.chat_id, text="✅ Verification successful.")
             admin_chatid = str(update.message.chat_id)
         else:
-            bot.send_message(chat_id=update.message.chat_id, text="❌ Incorrect code.")
+            context.bot.send_message(chat_id=update.message.chat_id, text="❌ Incorrect code.")
 
     try:
         updater = Updater(token=telegram_api)
